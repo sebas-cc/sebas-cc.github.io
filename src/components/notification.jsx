@@ -4,7 +4,7 @@ const Notification = ({ width, isVisible, message }) => {
   return (
     <div 
       className={`notification ${isVisible ? 'visible' : ''}`} 
-      role="alert"
+      role="status"
       aria-live="polite"
     >
       <div className="notification-content">

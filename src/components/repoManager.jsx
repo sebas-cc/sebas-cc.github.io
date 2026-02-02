@@ -1,7 +1,8 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, forwardRef } from 'react';
+import { fetchUserRepos } from '../services/fetchUserRepos';
 import './repoManager.css';
 
-function RepoManager() {
+const RepoManager = forwardRef(({ username }, ref) => {
   const [repos, setRepos] = useState([]);
   const [languages, setLanguages] = useState([]);
   const [search, setSearch] = useState('');
@@ -10,39 +11,28 @@ function RepoManager() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const getRepos = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://gitreposcraper-sebas-cc.netlify.app/sebas-cc');
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.description || 'Error al cargar los repositorios');
-        }
-        
-        const data = await response.json();
+        const data = await fetchUserRepos(username);
         setRepos(data);
-        
-        // Extraer lenguajes únicos y no vacíos
+
+        // Extract unique, non-empty languages
         const uniqueLanguages = [...new Set(
           data
             .filter(repo => repo.programmingLanguage && repo.programmingLanguage !== '')
             .map(repo => repo.programmingLanguage)
         )];
-        
         setLanguages(uniqueLanguages);
       } catch (err) {
-        console.error('Error fetching repositories:', err);
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     };
+    getRepos();
+  }, [username]);
 
-    fetchRepos();
-  }, []);
-
-  // Filtrar los repositorios usando useMemo para evitar recálculos innecesarios
   const filteredRepos = useMemo(() => {
     return repos
       .filter(repo => {
@@ -54,29 +44,32 @@ function RepoManager() {
       });
   }, [repos, search, selectedLanguage]);
 
-  const handleSearchChange = (e) => {
-    setSearch(e.target.value);
-  };
+  const handleSearchChange = (e) => setSearch(e.target.value);
+  const handleLanguageChange = (e) => setSelectedLanguage(e.target.value);
 
-  const handleLanguageChange = (e) => {
-    setSelectedLanguage(e.target.value);
-  };
-
-  if (error) {
-    return <div className="error-message">Error: {error}</div>;
-  }
+  if (error) return <div className="error-message">Error: {error}</div>;
 
   return (
-    <div className="repo-container">
+    <dialog ref={ref} className="repo-container">
       <nav className="repo-nav">
+        <form method="dialog">
+          <button className="close-button"><b>X</b></button>
+        </form>
         <h2>PROJECTS</h2>
-        
+        <span className="social-text">This is a list of all my repositories. <a href={`https://github.com/${username}`} target='_blank' rel="noopener noreferrer">You can view them all on my Github
+          <img
+            src="https://skillicons.dev/icons?i=github"
+            title="GitHub Link"
+            alt="GitHub Link"
+            className="social-icon"
+            style={{ margin: '0px' }}
+          /> here ↗</a></span>
         <div className="filter-controls">
           <div className="filter-group">
             <label htmlFor="languages">Programming language: </label>
-            <select 
-              id="languages" 
-              name="languages" 
+            <select
+              id="languages"
+              name="languages"
               value={selectedLanguage}
               onChange={handleLanguageChange}
               aria-label="Filter by programming language"
@@ -87,12 +80,11 @@ function RepoManager() {
               ))}
             </select>
           </div>
-          
           <div className="filter-group">
             <label htmlFor="search">Search:</label>
-            <input 
-              id="search" 
-              type="search" 
+            <input
+              id="search"
+              type="search"
               value={search}
               onChange={handleSearchChange}
               aria-label="Search repositories"
@@ -101,7 +93,7 @@ function RepoManager() {
           </div>
         </div>
       </nav>
-      
+
       {isLoading ? (
         <div className="loading">Loading repositories...</div>
       ) : (
@@ -114,7 +106,9 @@ function RepoManager() {
                     {repo.title}
                   </a>
                 </h3>
-                <p className="repo-description">{repo.description || 'No description available'}</p>
+                <p className="repo-description">
+                  {repo.description || 'No description available'}
+                </p>
                 {repo.programmingLanguage && (
                   <span className="language-tag">{repo.programmingLanguage}</span>
                 )}
@@ -125,8 +119,8 @@ function RepoManager() {
           )}
         </div>
       )}
-    </div>
+    </dialog>
   );
-}
+});
 
 export default RepoManager;
