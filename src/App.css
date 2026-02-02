@@ -253,9 +253,23 @@ section {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  animation: flip 1 linear both;
-  animation-timeline: view(block);
-  animation-range: entry 0% exit 100%;
+  animation: flip-fallback 1s ease-out both;
+}
+
+/* Only enable scroll-driven animation if supported */
+@supports (animation-timeline: view()) {
+  .card-inner {
+    animation: flip 1s linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-inner {
+    animation: none;
+    transform: rotateY(180deg);
+  }
 }
 
 .card-front,
