@@ -260,7 +260,7 @@ section {
 @supports (animation-timeline: view()) and (animation-range: entry 0% exit 100%) {
   .card-inner {
     animation: flip 1s linear both;
-    animation-timeline: view();
+    animation-timeline: view() !important;
     animation-range: entry 0% exit 100%;
   }
 }
