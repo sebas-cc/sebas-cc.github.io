@@ -257,18 +257,11 @@ section {
 }
 
 /* Only enable scroll-driven animation if supported */
-@supports (animation-timeline: view()) {
+@supports (animation-timeline: view()) and (animation-range: entry 0% exit 100%) {
   .card-inner {
     animation: flip 1s linear both;
-    animation-timeline: view(block);
+    animation-timeline: view();
     animation-range: entry 0% exit 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card-inner {
-    animation: none;
-    transform: rotateY(180deg);
   }
 }
 
