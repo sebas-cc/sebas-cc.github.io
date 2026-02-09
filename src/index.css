@@ -48,6 +48,66 @@ main {
     linear-gradient(0deg, rgba(13, 17, 23, 0.9) 5%, transparent 25%);
 }
 
+.background-shapes {
+  position: fixed;
+  top: 10vh;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.09;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 300px;
+  height: 300px;
+  background: var(--primary-color);
+  border-radius: 60% 70% 40% 50% / 30% 70% 70% 50%;
+  top: 5%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 200px;
+  height: 200px;
+  background: var(--accent-color);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 5s;
+}
+
+.shape3 {
+  width: 150px;
+  height: 150px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  top: 60%;
+  left: 5%;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
 @keyframes codefall {
   0% {
     transform: translateY(-100vh);
@@ -69,7 +129,6 @@ main {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
@@ -89,7 +148,6 @@ main {
 }
 
 @keyframes codeType {
-
   0%,
   100% {
     opacity: 0.3;
@@ -115,7 +173,6 @@ main {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -153,7 +210,7 @@ main {
   }
 }
 
-  @keyframes flip-fallback {
+@keyframes flip-fallback {
   0% {
     transform: rotateY(0deg);
   }

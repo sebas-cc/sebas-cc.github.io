@@ -1,14 +1,19 @@
 import { useEffect, useState, useMemo, forwardRef } from 'react';
 import { fetchUserRepos } from '../services/fetchUserRepos';
 import './repoManager.css';
+import { Repo } from '../interfaces/repo';
 
-const RepoManager = forwardRef(({ username }, ref) => {
-  const [repos, setRepos] = useState([]);
-  const [languages, setLanguages] = useState([]);
+interface RepoManagerProps {
+  username: string;
+}
+
+const RepoManager = forwardRef<HTMLDialogElement, RepoManagerProps>(({ username }, ref) => {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [languages, setLanguages] = useState<string[]>([]);
   const [search, setSearch] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getRepos = async () => {
@@ -25,7 +30,11 @@ const RepoManager = forwardRef(({ username }, ref) => {
         )];
         setLanguages(uniqueLanguages);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unexpected error occurred');
+        }
       } finally {
         setIsLoading(false);
       }
@@ -44,8 +53,8 @@ const RepoManager = forwardRef(({ username }, ref) => {
       });
   }, [repos, search, selectedLanguage]);
 
-  const handleSearchChange = (e) => setSearch(e.target.value);
-  const handleLanguageChange = (e) => setSelectedLanguage(e.target.value);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => setSelectedLanguage(e.target.value);
 
   if (error) return <div className="error-message">Error: {error}</div>;
 

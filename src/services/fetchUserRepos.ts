@@ -1,4 +1,6 @@
-export async function fetchUserRepos(username: string) {
+import { Repo } from "../interfaces/repo";
+
+export async function fetchUserRepos(username: string): Promise<Repo[]>  {
   try {
     const response = await fetch(`https://gitreposcraper-sebas-cc.netlify.app/${username}`);
 

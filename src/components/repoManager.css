@@ -72,6 +72,11 @@ input[type="search"]:focus {
   background: rgba(255, 255, 255, 0.12);
 }
 
+option {
+  background-color: black;
+  color: var(--accent-color);
+}
+
 /* Repo grid + cards */
 .repo-grid {
   display: grid;

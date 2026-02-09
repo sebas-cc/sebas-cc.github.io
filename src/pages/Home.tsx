@@ -3,7 +3,7 @@ import RepoManager from '../components/repoManager';
 
 function Home() {
     const EMAIL = 'csebas459@gmail.com';
-    const dialogRef = useRef(null); // RepoManager dialog
+    const dialogRef = useRef<HTMLDialogElement | null>(null); // RepoManager dialog
     const openModal = () => {
         dialogRef.current?.showModal();
     };
@@ -15,11 +15,11 @@ function Home() {
                 <section id="home" className="hero">
                     <div className="hero-content">
                         <span className="hero-badge">✨ Available for new projects & collaborations</span>
-                        <h1>Full Stack Developer <br />Web Optimization, Performance & Scalable Solutions</h1>
-                        <p>I help businesses scale their web presence by building reliable web applications and improving existing sites with performance optimization, technical SEO, and clean, maintainable code. My work balances user experience, fast loading times, and long-term stability.</p>
+                        <h1>Full Stack Developer <br />Specializing in Web Performance, SEO & Scalable Applications</h1>
+                        <p>I help businesses scale their web presence by building reliable, scalable web applications and improving existing sites through performance optimization, technical SEO, and clean, maintainable code. My work focuses on fast load times, strong Core Web Vitals, and long-term stability without sacrificing user experience.</p>
                         <div className="cta-buttons">
                             <a href="#projects" className="btn btn-primary">Explore My Projects</a>
-                            <a href="#contact" className="btn btn-secondary">Hire Me</a>
+                            <a href="#contact" className="btn btn-secondary">Contact Me</a>
                         </div>
                     </div>
                 </section>
@@ -29,11 +29,11 @@ function Home() {
                         <div className="about-text">
                             <div className="section-title">
                                 <h2>About Me</h2>
-                                <p>Focused on performance, reliability, and scalable web applications</p>
+                                <p>Focused on performance, reliability, and scalable web applications that grow with your business</p>
                             </div>
                             <div className="about-details">
-                                <p>I’m a full-stack developer with a strong focus on building efficient, maintainable, and scalable web applications. My background combines frontend and backend development, allowing me to improve performance, streamline functionality, and create smooth user experiences across platforms.</p>
-                                <p>Over the past few years, I’ve worked on projects that improved site stability, structure, and technical performance, helping teams solve real-world problems through clean code and practical engineering decisions. I’m constantly learning and refining my skills, especially around modern JavaScript, React, and backend workflows to deliver more reliable solutions.</p>
+                                <p>I’m a full-stack developer focused on building efficient, maintainable, and scalable web applications. By working across both frontend and backend, I optimize performance, streamline functionality, and design systems that remain reliable as products and teams grow.</p>
+                                <p>Over the past few years, I’ve worked on projects where performance, stability, and technical structure were critical. Focused on improving load times, resolving architectural bottlenecks, and strengthening technical SEO foundations. I take a practical, engineering-driven approach to problem solving, using clean code and thoughtful architecture to deliver solutions that hold up long-term. I continue refining my skills in modern JavaScript, React, and backend workflows to build faster and more reliable applications.</p>
 
                                 <dl className="stats-grid">
                                     <div className="stat-item">
@@ -47,7 +47,7 @@ function Home() {
                                                 <path d="M13 17h5"></path>
                                             </svg>
                                             <span className="sr-only">
-                                                Scalable full-stack web architecture, modular systems, and maintainable codebases.
+                                                Scalable full-stack architectures with modular systems, clear data flows, and maintainable codebases designed for long-term growth.
                                             </span>
                                         </dd>
                                     </div>
@@ -57,7 +57,7 @@ function Home() {
                                         <dd className="stat-number">
                                             <svg aria-hidden="true" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l9 5-9 5-9-5 9-5z"></path><path d="M3 12l9 5 9-5" stroke="currentColor" opacity="0.8"></path><path d="M3 17l9 5 9-5" stroke="currentColor" opacity="0.5"></path></svg>
                                             <span className="sr-only">
-                                                React, Next.js, TypeScript, Node.js, APIs, databases, and modern dev-tooling.
+                                                React, Next.js, TypeScript, Node.js, APIs, databases, and modern development tooling for building high-performance web applications.
                                             </span>
                                         </dd>
                                     </div>
@@ -70,7 +70,7 @@ function Home() {
                                                 <circle cx="15" cy="15" r="6" opacity="0.5"></circle>
                                             </svg>
                                             <span className="sr-only">
-                                                User-centered design, WCAG accessibility standards, and usability best practices.
+                                                User-centered interfaces built with WCAG accessibility standards, usability best practices, and a strong emphasis on code quality.
                                             </span>
                                         </dd>
                                     </div>
@@ -80,8 +80,7 @@ function Home() {
                                         <dd className="stat-number">
                                             <svg aria-hidden="true" width="48" height="48" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
                                                 <circle cx="64" cy="64" r="52" strokeWidth="8" opacity="0.5"></circle>
-                                                <path d="M64 12
-       A52 52 0 0 1 116 64" strokeWidth="8" strokeLinecap="round"></path>
+                                                <path d="M64 12 A52 52 0 0 1 116 64" strokeWidth="8" strokeLinecap="round"></path>
                                                 <polyline points="36,76 52,60 68,68 92,44" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"></polyline>
                                                 <circle cx="36" cy="76" r="4" fill="currentColor"></circle>
                                                 <circle cx="52" cy="60" r="4" fill="currentColor"></circle>
@@ -89,7 +88,7 @@ function Home() {
                                                 <circle cx="92" cy="44" r="4" fill="currentColor"></circle>
                                             </svg>
                                             <span className="sr-only">
-                                                Optimized load times, SEO best practices, and strong Core Web Vitals scores.
+                                                Performance optimization, technical SEO improvements, and Core Web Vitals optimization to enhance search visibility, speed, and user experience.
                                             </span>
                                         </dd>
                                     </div>
@@ -110,7 +109,7 @@ function Home() {
                 <section id="skills" className="skills">
                     <div className="section-title">
                         <h2>Technical Expertise</h2>
-                        <p>Crafting modern web experiences with industry-leading technologies</p>
+                        <p>Crafting modern, high-performance web experiences with industry-leading technologies</p>
                     </div>
                     <div className="skills-grid">
                         <div className="skill-card">
@@ -125,7 +124,7 @@ function Home() {
                                 </svg>
                             </span>
                             <h3>Web Development & CMS Customization</h3>
-                            <p>I develop and improve websites across WordPress, Shopify, and custom-coded platforms, focusing on clean structure, performance, and maintainability. From UI refinements to technical troubleshooting and feature implementations, I help teams make their sites faster, smoother, and easier to manage.</p>
+                            <p>I develop and improve websites across WordPress, Shopify, and custom-coded platforms with a focus on clean structure, strong performance, and long-term maintainability. From UI improvements to technical troubleshooting and feature development, I help teams build sites that are faster, more reliable, and easier to manage.</p>
                         </div>
                         <div className="skill-card">
                             <span className="skill-icon">
@@ -141,7 +140,7 @@ function Home() {
                                 </svg>
                             </span>
                             <h3>Backend Architecture</h3>
-                            <p>I work with Node.js, APIs, and database integrations to build reliable backend functionality that supports real-world applications. My approach prioritizes clear logic, stable data flows, and scalable architecture, ensuring features remain robust as projects grow.</p>
+                            <p>I build reliable backend systems using Node.js, APIs, and database integrations to support real-world applications at scale. My approach focuses on clear logic, stable data flows, and scalable architecture to ensure features remain dependable and easy to extend as projects grow.</p>
                         </div>
                         <div className="skill-card">
                             <span className="skill-icon">
@@ -157,7 +156,7 @@ function Home() {
                                 </svg>
                             </span>
                             <h3>Cloud & DevOps</h3>
-                            <p>I deploy and maintain applications using modern hosting platforms and cloud workflows, with attention to version control, environment configuration, and efficient deployment practices. Currently expanding my expertise in containerization and cloud scalability to support larger-scale projects.</p>
+                            <p>I deploy and maintain applications using modern hosting platforms and cloud workflows, with careful attention to version control, environment configuration, and efficient deployment processes. I continue expanding my knowledge in containerization and cloud scalability to support more complex and demanding systems.</p>
                         </div>
                     </div>
                 </section>
@@ -170,7 +169,7 @@ function Home() {
                         </div>
                         <div className="projects-grid">
                             <div className="project-card">
-                                <img className="project-image" src="/assets/images/SEO-Analyzer.webp" alt="SEO Analyzer"/>
+                                <img className="project-image" src="/assets/images/SEO-Analyzer.webp" alt="SEO Analyzer" />
                                 <div className="project-content">
                                     <h3>SEO Analyzer</h3>
                                     <p>SEO Analyzer is a modern browser extension that provides real-time, on-page SEO analysis directly in your browser. It evaluates headings, meta tags, links, page structure, and social metadata, offering clear insights to help optimize pages for search engines and sharing performance.</p>
@@ -210,7 +209,7 @@ function Home() {
                             </div>*/}
                         </div>
                         <div className="cta-buttons">
-                            <button onClick={openModal} className="btn btn-primary">More of my work</button>
+                            <button onClick={openModal} className="btn btn-primary">Find more of my work</button>
                         </div>
                     </div>
                     <RepoManager username='sebas-cc' ref={dialogRef} />
@@ -219,11 +218,10 @@ function Home() {
                 <section id="contact" className="contact-section">
                     <div className="section-title">
                         <h2>Contact</h2>
-                        <p>
-                            Feel free to reach out through any of the platforms below.
-                        </p>
+                        <p>Feel free to reach out through any of the platforms below.</p>
                     </div>
-
+                    <br/>
+                    <p style={{ justifySelf: 'center', textAlign: 'center', maxWidth: '700px' }}>I work with startups, agencies, and small businesses on performance optimization, technical SEO, and scalable web applications.</p>
                     <ul className="social-links">
                         <li className="social-item">
                             <a
